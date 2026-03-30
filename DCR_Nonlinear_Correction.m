@@ -190,13 +190,13 @@ title('双音信号缓解对比');
 legend('Location', 'south');
 axis([-(fs/2e6) (fs/2e6) -100 5]);
 
+% f_bandOut = (f < 2.3e6) | (f > 2.9e6); 
+f_bandOut = ((f < -1.0e6 )| (f > 1.9e6 & f < 2.1e6) | (f > 3.1e6 & f < 3.3e6)| (f > 6.0e6 ));
 
-% dist_mask = (f < 2.3e6) | (f > 2.9e6); 
-dist_mask = ((f < -1.0e6 )| (f > 1.9e6 & f < 2.1e6) | (f > 3.1e6 & f < 3.3e6)| (f > 6.0e6 ));
 
+avg_power_before = mean(P_y_BB(f_bandOut));
+avg_power_after = mean(P_x_final(f_bandOut));
 
-avg_power_before = mean(P_y_BB(dist_mask));
-avg_power_after = mean(P_x_final(dist_mask));
 
 
 
