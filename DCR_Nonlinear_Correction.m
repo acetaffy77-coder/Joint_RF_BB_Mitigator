@@ -171,8 +171,8 @@ range = N - plot_len + 1 : N;
 
 
 % 计算功率谱密度 
-[P_y_BB, f] = periodogram(y_BB_delay1(range), hamming(plot_len), plot_len, fs, 'centered');
-[P_x_final, ~] = periodogram(x_final(range), hamming(plot_len), plot_len, fs, 'centered');
+[P_y_BB, f] = periodogram(y_BB_delay1(range), blackmanharris(plot_len), plot_len, fs, 'centered');
+[P_x_final, ~] = periodogram(x_final(range), blackmanharris(plot_len), plot_len, fs, 'centered');
 
 % 归一化到主分量功率 (dBc)
 P_y_BB_dB = 10*log10(P_y_BB / max(P_y_BB));
